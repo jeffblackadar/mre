@@ -28,7 +28,7 @@ However, I can add images for my lesson to the images directory here on the subm
 ```
 This does not work for me on Github pages
 
-{% include figure.html src="../images/sample-lesson-1.png" caption="A sample image for my sample lesson, taken from Wikipedia entry for Digital History" %}
+
 
 ```
 

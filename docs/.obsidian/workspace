@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "readme.md.md",
+            "file": "en/lessons/sample_lesson.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "readme.md.md",
+                "file": "en/lessons/sample_lesson.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +88,7 @@
   },
   "active": "4e09875f03fc0992",
   "lastOpenFiles": [
-    "readme.md.md",
-    "en/lessons/sample_lesson.md"
+    "en/lessons/sample_lesson.md",
+    "readme.md.md"
   ]
 }

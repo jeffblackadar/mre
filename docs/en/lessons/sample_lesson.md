@@ -21,7 +21,7 @@ Code blocks work too:
 echo "hello world!"
 ```
 
-I can make [absolute links as normal](http://programminghistorian.org), though if I try to make a [relative link](../lessons/counting-frequencies) to a published lesson on the Programming Historian, that won't work, because this repo will only contain lessons that are works in progress.
+I can make [absolute links as normal](http://programminghistorian.org), though if I try to make a to a published lesson on the Programming Historian, that won't work, because this repo will only contain lessons that are works in progress.
 
 However, I can add images for my lesson to the images directory here on the submissions repo, and then use the standard figure syntax to include it:
 

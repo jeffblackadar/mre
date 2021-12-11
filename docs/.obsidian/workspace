@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "bec0b4cc0d76e562",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e09875f03fc0992",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "en/lessons/sample_lesson.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b515536cebe3b7d9",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa9a1573708714e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af64ce730a1ad244",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "0b2e79a4bb5d167c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "be92727b22e20831",
+    "type": "split",
+    "children": [
+      {
+        "id": "5513b0b82faf7597",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1ffc534a40900735",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "en/lessons/sample_lesson.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "4e09875f03fc0992",
+  "lastOpenFiles": [
+    "en/lessons/sample_lesson.md",
+    "readme.md.md"
+  ]
+}

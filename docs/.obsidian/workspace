@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "en/lessons/transcribe_handrwriting.md",
+            "file": "readme.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "en/lessons/transcribe_handrwriting.md",
+                "file": "readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,8 +88,8 @@
   },
   "active": "4e09875f03fc0992",
   "lastOpenFiles": [
+    "readme.md",
     "en/lessons/transcribe_handrwriting.md",
-    "en/lessons/sample_lesson.md",
-    "readme.md"
+    "en/lessons/sample_lesson.md"
   ]
 }

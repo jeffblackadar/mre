@@ -2,7 +2,9 @@
 
 From: https://www.browserstack.com/guide/record-and-playback-in-selenium
 
-## prerequisites
+__This example shows the use of personally identifiable information. Use this at your own risk. Always protect your information. Delete this script when you are done with it or modify accordingly.__
+
+## Prerequisites
 + Chrome browser
 
 ## Installation
@@ -12,14 +14,22 @@ https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackb
 
 ## Make a Selenium project
 + Open the Selenium extension in Chrome
+
 ![](sel_1.png)
+
 + Record a new test in a new project
+
 ![](sel_2.png)
+
 + Name your new project. Example: look_for_openings. Click ok.
+
 ![](sel_3.png)
+
 + Input the BASE URL. Example: https://covid-19.ontario.ca/
 + Input TEST CASE NAME. Example: enter_info_1
+
 ![](sel_4.png)
+
 + Click the red REC button to start recording.
 + Click Book and appointment on-line
 + Click _I want to book my_ :Booster dose of the vaccine

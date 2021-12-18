@@ -45,5 +45,6 @@ https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackb
 + Click "play" button to Run current test
 
 ## Delete test
+When you're done with this, delete the test, it has personally identifiable information in it.
 + Delete the test in Selenium
-+ Delete the test .side file. It has personally identifiable information in it.
++ Delete the test .side file. 

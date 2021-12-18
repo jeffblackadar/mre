@@ -39,7 +39,11 @@ https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackb
 + Enter: _Date of birth_
 + Enter: _Postal code_
 + Click: _continue_
-+ Save project
++ Save project. Select a private place to save it.+ 
 
 ## Run tests
 + Click "play" button to Run current test
+
+## Delete test
++ Delete the test in Selenium
++ Delete the test .side file. It has personally identifiable information in it.

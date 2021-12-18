@@ -36,6 +36,7 @@ We'll transcibe a handwritten document by following three steps:
 3. If you don't have an account, register by clicking "No account? _Create one!_".
 4. Input your e-mail address.
 5. Check your e-mail inbox for a verification code and input this into the web browser.
+
 ### 2. Setup Transcription: Create a "Computer Vision" Resource in Azure
 1. Go to https://portal.azure.com/
 2. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
@@ -61,6 +62,7 @@ We'll transcibe a handwritten document by following three steps:
 13. Wait for a message to say _Your deployment is complete_
 14. Click _Go to resource_
 15. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
+
 ### 3. Setup Transcription: Store Keys and Endpoint
 To use the service we need to send a Key to an Endpoint. As it says on Azure: "Do not share your keys. Store them securely– for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call."
 

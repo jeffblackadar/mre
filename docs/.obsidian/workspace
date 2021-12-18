@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "readme.md",
-            "mode": "source"
+            "file": "selenium.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "readme.md",
+                "file": "selenium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,8 +88,9 @@
   },
   "active": "4e09875f03fc0992",
   "lastOpenFiles": [
-    "readme.md",
+    "selenium.md",
     "en/lessons/transcribe_handrwriting.md",
+    "readme.md",
     "en/lessons/sample_lesson.md"
   ]
 }

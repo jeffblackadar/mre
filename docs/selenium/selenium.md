@@ -40,4 +40,6 @@ https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackb
 + Enter: _Postal code_
 + Click: _continue_
 + Save project
+
+## Run tests
 + Click "play" button to Run current test

@@ -12,15 +12,15 @@ difficulty: 2
 
 ## Introduction
 
-You can make headers, and see that they show up with the same styling that a published lesson has.
+Handwritten documents are often valuable sources for historians. However, transcribing handwitten text is timeconsuming. This lesson demonstrates a method to use a web service to transcribe handwriting, Microsoft Azure Cognitive Services Computer Vision. While far from perfect, it can be a useful tool to reduce the time required to transcribe handwriting and continues to improve. Azure's Computer Vision is a ready to use service and requires no pre-training to prepare it. The steps below will describe how to register for access, connect and transcribe an image on a website using its URL as well as transcribe an image on the local file system of your machine.
 
 ## Prerequisites
 
-+ A computer with Python installed. Google Colab was used to write this lesson.
++ A computer with Python installed. 
 + An internet connection.
-+ A credit card.
++ A credit card. (There is a free tier of service. The credit card is not charged if the number of files processed is below 5000 each month.)
 + A telephone number.
-+ If you choose to use Google Colab to program Python, a Google account is required.
++ Google Colab was used to write this lesson. If you choose to use Google Colab to program Python, a Google account is required.
 
 ## Procedure
 We'll transcibe a handwritten document by following three steps:
@@ -63,7 +63,7 @@ We'll transcibe a handwritten document by following three steps:
 14. Click _Go to resource_
 15. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
 
-### 3. Setup Transcription: Store Keys and Endpoint
+### 3. Setup Transcription: Store Key and Endpoint
 To use the service we need to send a Key to an Endpoint. As it says on Azure: "Do not share your keys. Store them securely– for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call."
 
 To reduce the risk of inadvertently sharing keys we'll store them in a separate file in a different folder from the rest of the program we're writing. This say, if you check your code into a repository like GitHub, you won't check in your key along with your code. If you don't use GitHub, don't worry, just follow these instructions to store your keys.
@@ -86,42 +86,334 @@ drive.mount('/content/drive')
 8. If necessary, click the Refresh icon.
 ![Google Colab](/images/step3-8.png)
 
+#### 3.A. Save Key and Endpoint in a JSON file
+1. This code below will create a file to store your Key and Endpoint so it can be used by your program. The file is JSON, a conventional format that organizes the data to make it readable by computers and humans. Copy this into your notebook.
+```
+# DELETE this cell when done
 
+# Run this to set up a directory and JSON file for a key and endpoint in a place separate from the program
+
+import os
+
+import pandas as pd
+
+  
+
+directory_config = "/content/drive/MyDrive/azure_config/" # Change this to suit your machine
+
+if not os.path.exists(directory_config):
+
+ os.makedirs(directory_config)
+
+print(directory_config)
+
+  
+
+# Copy KEY 1 and Endpoint from computer-vision-transcription-jhb | Keys and Endpoint
+
+key = 'b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-' # Change this to your Key
+
+endpoint = 'https://computer-vision-transcription-jhb.cognitiveservices.azure.com/' # Change this to your Endpoint
+
+data_config = [{'COMPUTER_VISION_SUBSCRIPTION_KEY': key, 'COMPUTER_VISION_ENDPOINT': endpoint}]
+
+# Creates Pandas DataFrame
+
+df_config = pd.DataFrame(data_config)
+
+path_config = os.path.join(directory_config,"cv.json")
+
+df_config.to_json(path_config)
+
+if(os.path.exists(path_config)):
+
+ print("Success.",path_config, "exists.")
+
+else:
+
+ print("Failure.",path_config, " does not exist.")
+
+```
+
+ 2. In the Azure Portal, open the Keys and Endpoint page of your computer-vision-transcription-jhb
  
+ ![Keys and Endpoint](/images/step3a-3.png)
+ 
+ 3. Copy KEY 1 and paste it into the program above. In line 11,
+ ```
+ key = 'b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-' # Change this to your Key
+ ```
+ replace b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-  with your key.
+ 
+ 3. Copy Endpoint and paste it into the program above. In line 12,
+ ```
+ endpoint = 'https://computer-vision-transcription-jhb.cognitiveservices.azure.com/' # Change this to your Endpoint
+ ```
+ replace https://computer-vision-transcription-jhb.cognitiveservices.azure.com/  with your endpoint.
+4. Run the cell.
+5. You should expect these results:
++ A print of "Success. /content/drive/MyDrive/azure_config/cv.json exists.""
++ The file cv.json has been created.
++ Open cv.json. It looks similar to this:
+```
+{"COMPUTER_VISION_SUBSCRIPTION_KEY":{"0":"b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-"},"COMPUTER_VISION_ENDPOINT":{"0":"https:\/\/computer-vision-transcription-jhb.cognitiveservices.azure.com\/"}}
+```
+6. Delete this cell. Now that cv.json is created we no longer need this code and don't want to leave the Key here. Recycling your keys is a good way to keep them secure. When your key changes, just edit cv.json or re-run this program.
 
+### 4. Install Azure[^1]
+1. Open a new cell in your notebook, paste in this code and run it. It will:
++ Install what is required to connect to Azure Cognitive Services Computer Vision.
++ Import the required libraries.
++ Get your Computer Vision subscription key from your environment variable.
++ Same thing with your Endpoint.
++ Authenticate with Azure Cognitive Services.
 
-## Another Sample Header
+```
+# Run this once per session
 
-Everything appears to work when I put another sample header, too. This will allow reviewers to examine a lesson and see more or less exactly what it will look like.[^1]
+# https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk
 
-## Tables
+  
 
-Here's a sample table from a different lesson:
+# Install what is required to connect to Azure Cognitive Services Computer Vision
 
+!pip install --upgrade azure-cognitiveservices-vision-computervision
 
-| Command | What It Does |
-|---------|--------------|
-| `pwd` | Prints the 'present working directory,' letting you know where you are. |
-| `ls` | Lists the files in the current directory
-| `man *` | Lists the manual for the command, substituted for the `*`
-| `cd *` | Changes the current directory to `*`
-| `mkdir *` | Makes a directory named `*`
-| `open` or `explorer` | On OS X, `open` followed by a file opens it; in Windows, the command `explorer` followed by a file name does the same thing.
-| `cat *` | `cat` is a versatile command. It will read a file to you if you substitute a file for `*`, but can also be used to combine files.
-| `head *` | Displays the first ten lines of `*`
-| `tail *` | Displays the last ten lines of `*`
-| `mv` | Moves a file
-| `cp` | Copies a file
-| `rm` | Deletes a file
-| `vim` | Opens up the `vim` document editor.
+  
+
+# Import the required libraries
+
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+
+from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
+
+from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
+
+from msrest.authentication import CognitiveServicesCredentials
+
+  
+
+# Get your Computer Vision subscription key from your environment variable.
+
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+
+ subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+
+else:
+
+ print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+
+ sys.exit()
+
+  
+
+# Get your Computer Vision endpoint from your environment variable.
+
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+
+ endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
+
+else:
+
+ print("\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+
+ sys.exit()
+
+  
+
+# Authenticate with Azure Cognitive Services.
+
+computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
+
+```
+
+### 5. Transcribe handwriting in an image on a website.
+
+This section will allow you to transcribe handwriting of an image on a website. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+
+1. Open a new cell in your notebook, paste in the code block below and run it. It will:
++ Set the url of the image to transcribe
+```
+read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
+```
+
++ Call Azure using computervision_client with the URL.
+```
+read_response = computervision_client.read(read_image_url,  raw=True)
+```
+
++ Read the results line by line
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+
+```
+import time
+
+# This section is taken directly from:
+
+# https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py
+
+#
+
+# <snippet_read_call>
+
+print("===== Read File - remote =====")
+
+# Get an image with text. Set the url of the image to transcribe.
+
+read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
+
+  
+
+# Call API with URL and raw response (allows you to get the operation location). Call Azure using computervision_client with the URL.
+
+read_response = computervision_client.read(read_image_url,  raw=True)
+
+# </snippet_read_call>
+
+  
+
+# <snippet_read_response>
+
+# Get the operation location (URL with an ID at the end) from the response
+
+read_operation_location = read_response.headers["Operation-Location"]
+
+# Grab the ID from the URL
+
+operation_id = read_operation_location.split("/")[-1]
+
+  
+
+# Call the "GET" API and wait for it to retrieve the results 
+
+while True:
+
+ read_result = computervision_client.get_read_result(operation_id)
+
+ if read_result.status not in ['notStarted', 'running']:
+
+ break
+
+ time.sleep(1)
+
+  
+
+# Print the detected text, line by line
+
+if read_result.status == OperationStatusCodes.succeeded:
+
+ for text_result in read_result.analyze_result.read_results:
+
+ for line in text_result.lines:
+
+ print(line.text)
+
+ print(line.bounding_box)
+
+print()
+
+# </snippet_read_response>
+
+```
+[^2]
+
+### 6. Transcribe handwriting in an image stored on your machine.
+
+This section will allow you to transcribe handwriting of an image stored on your machine. It's a lot like the above section. You must have an image saved on your computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+
+1. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
+2. Download an example image and save it to the directory.
+3. Open a new cell in your notebook, paste in the code block below and run it. It will:
++ Set the path to the image and read it.
+```
+# Set the path to the image
+
+read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
+
+# Open the image
+
+read_image = open(read_image_path, "rb")
+```
+
++ Call Azure using computervision_client with the image.
+```
+read_response = computervision_client.read_in_stream(read_image, raw=True)
+```
+
++ Read the results line by line
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+
+```
+images_folder = "/content/"
+
+print("===== Read File - local =====")
+
+# Set the path to the image
+
+read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
+
+# Open the image
+
+read_image = open(read_image_path, "rb")
+
+  
+
+# Call API with image and raw response (allows you to get the operation location). Call Azure using computervision_client with the image.
+
+read_response = computervision_client.read_in_stream(read_image, raw=True)
+
+# Get the operation location (URL with ID as last appendage)
+
+read_operation_location = read_response.headers["Operation-Location"]
+
+# Take the ID off and use to get results
+
+operation_id = read_operation_location.split("/")[-1]
+
+  
+
+# Call the "GET" API and wait for the retrieval of the results
+
+while True:
+
+ read_result = computervision_client.get_read_result(operation_id)
+
+ if read_result.status.lower () not in ['notstarted', 'running']:
+
+ break
+
+ print ('Waiting for result...')
+
+ time.sleep(10)
+
+  
+
+# Print results, line by line
+
+if read_result.status == OperationStatusCodes.succeeded:
+
+ for text_result in read_result.analyze_result.read_results:
+
+ for line in text_result.lines:
+
+ print(line.text)
+
+ print(line.bounding_box)
+
+print()
+```
+
 
 ## Summary
-
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database.
 
 ## Bibliography
 
+Graham, Shawn. Detecting and Extracting Hand-written text. Jan 28, 2020. https://shawngraham.github.io/dhmuse/detecting-handwriting/. Accessed 25 December, 2021.
+
+Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
 
 ## Footnotes
 
-
-[^1]: I say "more or less" so as not to court the vengeance of the Markdown gods!
+[^1]: Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
+[^2]: Cognitive-services-quickstart-code, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.

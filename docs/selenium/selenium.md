@@ -2,7 +2,7 @@
 
 From: https://www.browserstack.com/guide/record-and-playback-in-selenium
 
-__This example shows the use of personally identifiable information. Use this at your own risk. Always protect your information. Delete this script when you are done with it or modify accordingly.__
+__This example shows the use of personally identifiable information. Use this at your own risk. Always protect your information. Delete this script when you are done with it or modify accordingly. Don't put passwords or other sensitive information in test scripts__
 
 ## Prerequisites
 + Chrome browser
@@ -49,7 +49,7 @@ https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackb
 + Enter: _Date of birth_
 + Enter: _Postal code_
 + Click: _continue_
-+ Save project. Select a private place to save it.+ 
++ Save project. Select a private place to save it.
 
 ## Run tests
 + Click "play" button to Run current test

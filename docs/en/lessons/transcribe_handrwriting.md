@@ -145,9 +145,54 @@ else:
 6. Delete this cell. Now that cv.json is created we no longer need this code and don't want to leave the Key here. 
 7. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just edit cv.json or re-run the program above.
 
+#### 3.B. Read Key and Endpoint from a JSON file
+1. This code below will read the file you created above to store your Key and Endpoint in an environment variable so that it can be accessed by the program. Copy this into your notebook.
+
+```
+import os
+import pandas as pd
+
+directory_config = "/content/drive/MyDrive/azure_config/" # Change this to suit your machine
+
+path_config = os.path.join(directory_config,"cv.json")
+
+# Verify the configuration file exists
+if(os.path.exists(path_config)):
+    print("Success.",path_config, "exists.")
+else:
+    print("Failure.",path_config, "does not exist.")
+
+# Read the JSON file into a DataFrame
+df_config = pd.read_json(path_config)
+#print(df_config['COMPUTER_VISION_SUBSCRIPTION_KEY'].iloc[0])
+#print(df_config['COMPUTER_VISION_ENDPOINT'].iloc[0])
+
+# Store as enivonmental variables
+os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY'] = df_config['COMPUTER_VISION_SUBSCRIPTION_KEY'].iloc[0]
+os.environ['COMPUTER_VISION_ENDPOINT'] = (df_config['COMPUTER_VISION_ENDPOINT'].iloc[0])
+
+# Do some basic validation
+if len(os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']) == 32:
+    print("Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.")
+else:
+    print("Error, The COMPUTER_VISION_SUBSCRIPTION_KEY is not the expected length, please check it.")
+```
+
+2. Run this cell.  The expected result is to see this printed:
+```
+Success. /content/drive/MyDrive/azure_config/cv.json exists. Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
+```
+If you see error messages, check that cv.json is visible to the program and that the Key is correct.
+
 ### 4. Install Azure[^1]
-1. Open a new cell in your notebook, paste in this code and run it. It will:
-+ Install what is required to connect to Azure Cognitive Services Computer Vision.
+1. Open a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
+```
+# Install what is required to connect to Azure Cognitive Services Computer Vision
+# Run this once on your machine. If you are using Google Colab, run this once per session.
+!pip install --upgrade azure-cognitiveservices-vision-computervision
+```
+
+2. Open another new cell in your notebook, paste in this code and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
 + Same thing with your Endpoint.
@@ -155,16 +200,13 @@ else:
 
 ```
 # Run this once per session
-# https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk
-
-# Install what is required to connect to Azure Cognitive Services Computer Vision
-!pip install --upgrade azure-cognitiveservices-vision-computervision
 
 # Import the required libraries
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
+import sys
 
 # Get your Computer Vision subscription key from your environment variable.
 if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:

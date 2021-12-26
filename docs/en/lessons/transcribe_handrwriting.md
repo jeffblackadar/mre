@@ -65,8 +65,8 @@ We'll transcibe handwriting in an image by following these steps:
 
 10. In the _Instance Details_ section:
 	 + Select a Region near to you. This is where the instance is hosted.
-	 + Name the instance. Choose a unique name that is unique with letters or hyphens only. Input computer-vision-transcription-uuu, where uuu is your initials or something unique.
-	 + Set _Pricinet tier_ to Free F0. (__Important__)
+	 + Name the instance. Choose a unique name that is unique with letters or hyphens only. Input _computer-vision-transcription-uuu_, where uuu is your initials or something unique. I used _computer-vision-transcription-jhb_.
+	 + Set _Pricing tier_ to Free F0. (__Important__)
 11. Read the _Responsible AI Notice_ and check the box.
 12. Click _Review + create_
 13. Wait for a message to say _Your deployment is complete_
@@ -76,24 +76,25 @@ We'll transcibe handwriting in an image by following these steps:
 ### 3. Store a secret Key and Endpoint to access Computer Vision from your machine
 To use the service we need to send a Key to an Endpoint. As it says on Azure: "Do not share your keys. Store them securely– for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call."
 
-To reduce the risk of inadvertently sharing keys we'll store them in a separate file in a different folder from the rest of the program we're writing. This say, if you check your code into a repository like GitHub, you won't check in your key along with your code. If you don't use GitHub, don't worry, just follow these instructions to store your keys.
+To reduce the risk of inadvertently sharing your secret key we'll store it in a separate file in a different folder from the rest of the program we're writing. This helps protect your key. For example, if you check your code into a repository like GitHub, you can avoid checking in your secret key along with your code. If you don't use GitHub, don't worry, just follow these instructions to store your key.
 
-We'll store the keys in a small JSON file. JSON has a specific format that is readable by Python and is used frequently for a variety of purposes. 
-We'll open a Notebook on Google Colab and make a separate folder for your key JSON file. You can use Python on your personal computer in a similar manner.
+We'll store the key in a small JSON file. JSON has a specific format that is readable by Python and is used frequently for a variety of purposes. 
+We'll open a Notebook on Google Colab and make a separate folder for your key's JSON file. You can use Python on your personal computer in a similar manner.
 
-1. Go to: https://colab.research.google.com/
-2. Click New Notebook
+1. Go to: https://colab.research.google.com/ (or your Python environment, such as Anaconda.)
+2. Click _New Notebook_.
 3. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
-4. Input this code into a cell and run it by clicking the Run Cell button with a triangle.
+4. For Google Colab only, perform the steps below. if you use a Python environment on your machine like Anaconda, you won't have to connect to a disk drive. For more information about using Anaconda, see the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]
++ Input this code into a cell and run it by clicking the Run Cell button with a triangle.
 ```
 # Mount Google Drive
 from google.colab import drive
 drive.mount('/content/drive')
 ```
-5. To connect to Google Drive, follow the prompts, click _Connect to Google Drive_, choose your account, read the conditions and if you agree, click _Allow_.
-6. Once this is complete, The message _Mounted at /content/drive_ indicates this is complete.
-7. Click the Files icon on the left to show Google Drive.
-8. If necessary, click the Refresh icon.
++ To connect to Google Drive, follow the prompts, click _Connect to Google Drive_, choose your account, read the conditions and if you agree, click _Allow_.
++ Once this is complete, The message _Mounted at /content/drive_ indicates this is complete.
++ Click the Files icon on the left to show Google Drive.
++ If necessary, click the Refresh icon.
 ![Google Colab](/images/step3-8.png)
 
 #### 3.A. Save Key and Endpoint in a JSON file
@@ -192,7 +193,7 @@ Success. /content/drive/MyDrive/azure_config/cv.json exists. Success, COMPUTER_V
 ```
 If you see error messages, check that cv.json is visible to the program and that the Key is correct.
 
-### 4. Install Azure Computer Vision on your machine[^1]
+### 4. Install Azure Computer Vision on your machine[^2]
 1. Open a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
@@ -292,7 +293,7 @@ print()
 # </snippet_read_response>
 
 ```
-[^2]
+[^3]
 
 ### 6. Transcribe handwriting in an image stored on your machine.
 
@@ -363,11 +364,14 @@ You have connected to Azure Cognitive Services Computer Vision and transcribed t
 
 ## Bibliography
 
+Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
+
 Graham, Shawn. Detecting and Extracting Hand-written text. Jan 28, 2020. https://shawngraham.github.io/dhmuse/detecting-handwriting/. Accessed 25 December, 2021.
 
 Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
 
 ## Footnotes
 
-[^1]: Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
-[^2]: Cognitive-services-quickstart-code, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
+[^1]: Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
+[^2]: Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
+[^3]: Cognitive-services-quickstart-code, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.

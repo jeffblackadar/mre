@@ -29,8 +29,8 @@ We'll transcibe a handwritten document by following three steps:
 1. Register for a Microsoft account.
 2. Obtain a key for the service and save it.
 3. Connect to the service and transcribe the text on an image.
-	1. An image saved on a disk drive
-	2. An image on a web site
+	+ An image saved on a disk drive
+	+ An image on a web site
 
 ### 1. Register for a Microsoft account
 1. Go to [https://portal.azure.com](https://portal.azure.com)
@@ -42,23 +42,29 @@ We'll transcibe a handwritten document by following three steps:
 ### 2. Setup Transcription: Create a "Computer Vision" Resource in Azure
 1. Go to https://portal.azure.com/
 2. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
+
 ![+ Create a resource](/images/step2-2.png)
+
 3. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 4. Click "Start with an Azure free trial".
 5. Input a telephone number to verify your identity.
 6. Input your contact information and credit card number.
 7. Click + Create a resource (for the second time). This will create the instance of Computer Vision for you to use.
+ 
 ![+ Create a resource](/images/step2-2.png)
+
 8. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 9. In the _Create Computer Vision_ screen, _Basics_ tab, _Project Details_ section, set these fields:
-	1. _Subscription_: Azure subscription 1
-	2. _Resource group_: click _Create new_
-	3. For _Name_ input resource_group_transcription. Click OK.
+	+ _Subscription_: Azure subscription 1
+	+ _Resource group_: click _Create new_
+	+ For _Name_ input resource_group_transcription. Click OK.
+
  ![+ Resource group | Create new](/images/step2-9.png)
- 10. In the _Instance Details_ section:
-	 1. Select a Region near to you. This is where the instance is hosted.
-	 2. Name the instance. Choose a unique name that is unique with letters or hyphens only. Input computer-vision-transcription-uuu, where uuu is your initials or something unique.
-	 3. Set _Pricinet tier_ to Free F0.
+
+10. In the _Instance Details_ section:
+	 + Select a Region near to you. This is where the instance is hosted.
+	 + Name the instance. Choose a unique name that is unique with letters or hyphens only. Input computer-vision-transcription-uuu, where uuu is your initials or something unique.
+	 + Set _Pricinet tier_ to Free F0. (__Important__)
 11. Read the _Responsible AI Notice_ and check the box.
 12. Click _Review + create_
 13. Wait for a message to say _Your deployment is complete_

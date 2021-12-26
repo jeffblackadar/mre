@@ -1,5 +1,5 @@
 ---
-title: Transcribe handwriting and text with Microsoft Azure Cognitive Services
+title: Transcribe handwriting and text with Microsoft Azure Cognitive Services Computer Vision
 authors:
 - Jeff Blackadar
 date: 2021-12-11
@@ -9,12 +9,13 @@ layout: lesson
 difficulty: 2
 ---
 
+__Draft__
 
 ## Introduction
 
-Handwritten documents are often valuable sources for historians. However, transcribing handwitten text is timeconsuming. This lesson demonstrates a method to use a web service to transcribe handwriting, Microsoft Azure Cognitive Services Computer Vision. While far from perfect, it can be a useful tool to reduce the time required to transcribe handwriting and continues to improve. Azure's Computer Vision is a ready to use service and requires no pre-training to prepare it. The steps below will describe how to register for access, connect and transcribe an image on a website using its URL as well as transcribe an image on the local file system of your machine.
+Handwritten documents are often valuable sources for historians. However, transcribing handwitten text is time consuming. This lesson demonstrates a method to use a web-based service to transcribe handwriting, Microsoft Azure Cognitive Services Computer Vision. While far from perfect, it can be a useful tool to reduce the time required to transcribe handwriting and continues to improve. Azure's Computer Vision is a ready to use service and requires no pre-training to prepare it. The steps below will describe how to register for access, connect and transcribe handwriting in an image.
 
-When there are several technology choices available to do optical character recognition (OCR), why would you want other one? At the time of writing Azure Computer Vision has an advantage over other methods where it can transcribe Latin alphabet handwriting without custom training by the user.
+When there are several technology choices available to do optical character recognition (OCR), why would you want other one? At the time of writing, Azure Computer Vision has an advantage over other methods where it can transcribe Latin alphabet handwriting without custom training by the user.
 
 ## Prerequisites
 
@@ -25,12 +26,13 @@ When there are several technology choices available to do optical character reco
 + Google Colab was used to write this lesson. If you choose to use Google Colab to program Python, a Google account is required.
 
 ## Procedure
-We'll transcibe a handwritten document by following three steps:
+We'll transcibe handwriting in an image by following these steps:
 1. Register for a Microsoft account.
-2. Obtain a key for the service and save it.
-3. Connect to the service and transcribe the text on an image.
-	+ An image saved on a disk drive
-	+ An image on a web site
+2. Create a "Computer Vision" Resource in Azure to perform transcription.
+3. Store a secret Key and Endpoint to access Computer Vision from your machine.
+4. Install Azure Computer Vision on your machine.
+5. Transcribe handwriting in an image on a website.
+6. Transcribe handwriting in an image stored on your machine.
 
 ### 1. Register for a Microsoft account
 1. Go to [https://portal.azure.com](https://portal.azure.com)
@@ -39,7 +41,7 @@ We'll transcibe a handwritten document by following three steps:
 4. Input your e-mail address.
 5. Check your e-mail inbox for a verification code and input this into the web browser.
 
-### 2. Setup Transcription: Create a "Computer Vision" Resource in Azure
+### 2. Create a "Computer Vision" Resource in Azure to perform transcription
 1. Go to https://portal.azure.com/
 2. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
 
@@ -71,7 +73,7 @@ We'll transcibe a handwritten document by following three steps:
 14. Click _Go to resource_
 15. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
 
-### 3. Setup Transcription: Store Key and Endpoint
+### 3. Store a secret Key and Endpoint to access Computer Vision from your machine
 To use the service we need to send a Key to an Endpoint. As it says on Azure: "Do not share your keys. Store them securely– for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call."
 
 To reduce the risk of inadvertently sharing keys we'll store them in a separate file in a different folder from the rest of the program we're writing. This say, if you check your code into a repository like GitHub, you won't check in your key along with your code. If you don't use GitHub, don't worry, just follow these instructions to store your keys.
@@ -129,13 +131,13 @@ else:
  
  ![Keys and Endpoint](/images/step3a-3.png)
  
- 3. Copy KEY 1 and paste it into the program above. In line 11,
+ 3. Copy KEY 1 and paste it into the program above. In line 12,
  ```
  key = 'b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-' # Change this to your Key
  ```
  replace b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-  with your key.
  
- 3. Copy Endpoint and paste it into the program above. In line 12,
+ 3. Copy Endpoint and paste it into the program above. In line 13,
  ```
  endpoint = 'https://computer-vision-transcription-jhb.cognitiveservices.azure.com/' # Change this to your Endpoint
  ```
@@ -190,7 +192,7 @@ Success. /content/drive/MyDrive/azure_config/cv.json exists. Success, COMPUTER_V
 ```
 If you see error messages, check that cv.json is visible to the program and that the Key is correct.
 
-### 4. Install Azure[^1]
+### 4. Install Azure Computer Vision on your machine[^1]
 1. Open a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision

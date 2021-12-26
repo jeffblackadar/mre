@@ -132,25 +132,28 @@ else:
  
  ![Keys and Endpoint](/images/step3a-3.png)
  
- 3. Copy KEY 1 and paste it into the program above. In line 12,
+ 3. Copy KEY 1 and paste it into the program above. In line 12, replace b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-  with your key.
+ 
  ```
  key = 'b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-' # Change this to your Key
  ```
- replace b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-  with your key.
+  
+ 3. Copy Endpoint and paste it into the program above. In line 13,  replace https://computer-vision-transcription-jhb.cognitiveservices.azure.com/  with your endpoint.
  
- 3. Copy Endpoint and paste it into the program above. In line 13,
  ```
  endpoint = 'https://computer-vision-transcription-jhb.cognitiveservices.azure.com/' # Change this to your Endpoint
  ```
- replace https://computer-vision-transcription-jhb.cognitiveservices.azure.com/  with your endpoint.
+
 4. Run the cell.
 5. You should expect these results:
 + A print of "Success. /content/drive/MyDrive/azure_config/cv.json exists.""
 + The file cv.json has been created.
 + Open cv.json. It should look similar to this:
+
 ```
 {"COMPUTER_VISION_SUBSCRIPTION_KEY":{"0":"b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-"},"COMPUTER_VISION_ENDPOINT":{"0":"https:\/\/computer-vision-transcription-jhb.cognitiveservices.azure.com\/"}}
 ```
+
 6. Delete this cell. Now that cv.json is created we no longer need this code and don't want to leave the Key here. 
 7. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just edit cv.json or re-run the program above.
 
@@ -188,9 +191,12 @@ else:
 ```
 
 2. Run this cell.  The expected result is to see this printed:
+
 ```
-Success. /content/drive/MyDrive/azure_config/cv.json exists. Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
+Success. /content/drive/MyDrive/azure_config/cv.json exists. 
+Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
 ```
+
 If you see error messages, check that cv.json is visible to the program and that the Key is correct.
 
 ### 4. Install Azure Computer Vision on your machine[^2]
@@ -363,6 +369,8 @@ print()
 You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database.
 
 ## Bibliography
+
+Library and Archives Canada. William Andrew White fonds, R15535-0-8-E, "Diary 1917" [http://collectionscanada.gc.ca/pam_archives/index.php?fuseaction=genitem.displayItem&lang=eng&rec_nbr=4818067](http://collectionscanada.gc.ca/pam_archives/index.php?fuseaction=genitem.displayItem&lang=eng&rec_nbr=4818067)
 
 Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
 

@@ -244,7 +244,9 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 ### 5. Transcribe handwriting in an image on a website.
 
-This section will allow you to transcribe handwriting of an image on a website. This requires the URL for the image. For this example, we'll use ![http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg). http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg
+This section will allow you to transcribe handwriting of an image on a website. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+
+![http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg).
 
 
 1. Open a new cell in your notebook, paste in the code block below and run it. 

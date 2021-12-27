@@ -81,10 +81,10 @@ To reduce the risk of inadvertently sharing your secret key we'll store it in a 
 We'll store the key in a small JSON file. JSON has a specific format that is readable by Python and is used frequently for a variety of purposes. 
 We'll open a Notebook on Google Colab and make a separate folder for your key's JSON file. You can use Python on your personal computer in a similar manner.
 
-1. Go to: https://colab.research.google.com/ (or your Python environment, such as Anaconda.)
+1. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda.)
 2. Click _New Notebook_.
 3. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
-4. For Google Colab only, perform the steps below. if you use a Python environment on your machine like Anaconda, you won't have to connect to a disk drive. For more information about using Anaconda, see the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]
+4. For Google Colab only, perform the steps below. (If you use a Python environment on your machine like Anaconda, you won't have to connect to a disk drive. For more information about using Anaconda, see the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1])
 + Input this code into a cell and run it by clicking the Run Cell button with a triangle.
 ```
 # Mount Google Drive
@@ -98,7 +98,7 @@ drive.mount('/content/drive')
 ![Google Colab](/images/step3-8.png)
 
 #### 3.A. Save Key and Endpoint in a JSON file
-1. This code below will create a file to store your Key and Endpoint so it can be used by your program. The file is JSON, a conventional format that organizes the data to make it readable by computers and humans. Copy this into your notebook.
+1. This code below will create a file to store your Key and Endpoint so it can be used by your program. The file is JSON, a conventional format that organizes the data to make it readable by computers and humans. In your Python notebook, create a new cell. (_+ Code_ in Google Colab.) Copy the code below into your new notebook cell.
 ```
 
 # DELETE this cell when done
@@ -158,7 +158,7 @@ else:
 7. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just edit cv.json or re-run the program above.
 
 #### 3.B. Read Key and Endpoint from a JSON file
-1. This code below will read the file you created above to store your Key and Endpoint in an environment variable so that it can be accessed by the program. Copy this into your notebook.
+1. This code below will read the file you created above to store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
 
 ```
 import os
@@ -200,14 +200,14 @@ Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
 If you see error messages, check that cv.json is visible to the program and that the Key is correct.
 
 ### 4. Install Azure Computer Vision on your machine[^2]
-1. Open a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
+1. Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.
 !pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
-2. Open another new cell in your notebook, paste in this code and run it. It will:
+2. Create another new cell in your notebook, paste in this code and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
 + Same thing with your Endpoint.
@@ -244,21 +244,10 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 ### 5. Transcribe handwriting in an image on a website.
 
-This section will allow you to transcribe handwriting of an image on a website. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+This section will allow you to transcribe handwriting of an image on a website. This requires the URL for the image. For this example, we'll use ![http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg). http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg
 
-1. Open a new cell in your notebook, paste in the code block below and run it. It will:
-+ Set the url of the image to transcribe
-```
-read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
-```
 
-+ Call Azure using computervision_client with the URL.
-```
-read_response = computervision_client.read(read_image_url,  raw=True)
-```
-
-+ Read the results line by line
-+ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+1. Open a new cell in your notebook, paste in the code block below and run it. 
 
 ```
 import time
@@ -300,6 +289,21 @@ print()
 
 ```
 [^3]
+2. This code will:
++ Set the url of the image to transcribe
+```
+read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
+```
+
++ Call Azure using computervision_client with the URL.
+```
+read_response = computervision_client.read(read_image_url,  raw=True)
+```
+
++ Read the results line by line
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+
+
 
 ### 6. Transcribe handwriting in an image stored on your machine.
 
@@ -307,23 +311,7 @@ This section will allow you to transcribe handwriting of an image stored on your
 
 1. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
 2. Download an example image and save it to the directory.
-3. Open a new cell in your notebook, paste in the code block below and run it. It will:
-+ Set the path to the image and read it.
-```
-# Set the path to the image
-read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
-
-# Open the image
-read_image = open(read_image_path, "rb")
-```
-
-+ Call Azure using computervision_client with the image.
-```
-read_response = computervision_client.read_in_stream(read_image, raw=True)
-```
-
-+ Read the results line by line
-+ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+3. Create a new cell in your notebook, paste in the code block below. 
 
 ```
 images_folder = "/content/"
@@ -363,6 +351,35 @@ if read_result.status == OperationStatusCodes.succeeded:
             print(line.bounding_box)
 print()
 ```
+[^3]
+
+4. The code will set the path to the image and read it. To do this:
++ Change the line images_folder = "/content/" to the folder you are using.
+
+```
+images_folder = "/content/"
+```
+
++ Change "td_00044_b2.jpg" to the name of the file you are using.
+```
+# Set the path to the image
+read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
+
+# Open the image
+read_image = open(read_image_path, "rb")
+```
+
+5. The code will also:
++ Call Azure using computervision_client with the image.
+
+```
+read_response = computervision_client.read_in_stream(read_image, raw=True)
+```
+
++ Read the results line by line
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+6. Run the cell to read the handwriting in the image. 
+
 
 
 ## Summary

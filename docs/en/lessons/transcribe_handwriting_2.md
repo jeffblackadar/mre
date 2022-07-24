@@ -149,7 +149,7 @@ Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
 Delete this output
 ```
 Click "x" in the notebook output to delete it.  This deletes the text of your key. 
-If you see error messages, check that you input the ket correctly.
+If you see error messages, check that you input the key correctly.
 
 ### 4. Install Azure Computer Vision on your machine[^2]
 1. Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.

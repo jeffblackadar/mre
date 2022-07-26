@@ -66,9 +66,9 @@ We'll transcibe handwriting in an image by following these steps:
 
 8. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 9. In the _Create Computer Vision_ screen, _Basics_ tab, _Project Details_ section, set these fields:
-	+ _Subscription_: Azure_subscription_1
+	+ _Subscription_: Azure subscription 1
 	+ _Resource group_: click _Create new_
-	+ For _Name_ input resource-group-transcription. Click OK.
+	+ For _Name_ input resource_group_transcription. Click OK.
 
  ![+ Resource group | Create new](/images/step2-9.png)
 

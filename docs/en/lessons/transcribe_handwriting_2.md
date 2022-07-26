@@ -78,16 +78,16 @@ We'll transcibe handwriting in an image by following these steps:
 	 + Set _Pricing tier_ to Free F0. (__Important__)
 11. Read the _Responsible AI Notice_ and check the box.
 12. Click _Review + create_
-13. Wait for a message to say _Your deployment is complete_
-14. Click _Go to resource_
-15. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
+13. Click _Create_
+14. Wait for a message to say _Your deployment is complete_
+15. Click _Go to resource_
+16. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
 
 ### 3. Store a secret Key and Endpoint to access Computer Vision from your machine
-To use the service we need to send a Key to an Endpoint. As it says on Azure: "Do not share your keys. Store them securely– for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call."
+To use the service your computer program must send a Key to an Endpoint at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely..."
 
 To reduce the risk of inadvertently sharing your secret key, store it in a separate file in a different folder from the rest of the program you're writing.
-This helps protect your key. For example, if you check your code into a repository like GitHub, you can avoid checking in your secret key along with your code. 
-If you don't use GitHub, don't worry, just paste your key in a place you can refer to it that is separate from your program.
+This helps protect your key. For example, if you check your code into a repository like GitHub, you can avoid checking in the file with your secret key along with your code. If you don't use GitHub, don't worry, just paste your key in a place you can refer to it that is separate from your program.
 
 1. In the Azure Portal, open the Keys and Endpoint page of your computer-vision-transcription-jhb
  
@@ -97,7 +97,7 @@ If you don't use GitHub, don't worry, just paste your key in a place you can ref
   
 3. Copy Endpoint and paste it in your file for reference. The endpoint will look like this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/.
 
-4. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just edit cv.json or re-run the program above.
+4. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key.
 
 #### 3.B. Create a notebook
 

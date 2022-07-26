@@ -101,28 +101,13 @@ This helps protect your key. For example, if you check your code into a reposito
 
 #### 3.B. Create a notebook
 
-1. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda.)
+1. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
 2. Click _New Notebook_.
 3. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
-4. For Google Colab only, perform the steps below. (If you use a Python environment on your machine like Anaconda, you won't have to connect to a disk drive. For more information about using Anaconda, see the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1])
-+ Input this code into a cell and run it by clicking the Run Cell button with a triangle.
-```
-# Mount Google Drive
-from google.colab import drive
-drive.mount('/content/drive')
-```
-+ To connect to Google Drive, follow the prompts, click _Connect to Google Drive_, choose your account, read the conditions and if you agree, click _Allow_.
-+ Once this is complete, The message _Mounted at /content/drive_ indicates this is complete.
-+ Click the Files icon on the left to show Google Drive.
-+ If necessary, click the Refresh icon.
-![Google Colab](/images/step3-8.png)
-
-
-1. This code below will read the file you created above to store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
+4. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
 
 ```
 import os
-import pandas as pd
 
 print('Enter your secret computer vision key:')
 cv_key = input()
@@ -337,7 +322,7 @@ read_response = computervision_client.read_in_stream(read_image, raw=True)
 
 
 ## Summary
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using the positions of the transcribe text, it is possible to transcribe written forms into structured data, like a spreadsheet.
 
 ## Bibliography
 
